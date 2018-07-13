@@ -28,27 +28,29 @@ jobs:
       - run: yarn run webdriver:update
       - run: yarn run webdriver:start
 
-    build:
-      docker:
-        # specify the version you desire here
-        - image: circleci/node:7.10
+  test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
 
-      working_directory: ~/repo
-      steps:
-        - checkout
+    working_directory: ~/repo
+    steps:
+      - checkout
 
 
-        # run tests!
-        - run: yarn test
+      # run tests!
+      - run: yarn test
 
 workflows:
   version: 2
   run_test:
     jobs:
       - server
-      - build
+      - test:
+        requires:
+          - server
