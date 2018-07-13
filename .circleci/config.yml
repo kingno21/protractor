@@ -7,13 +7,14 @@ jobs:
   server:
     docker:
       - image: circleci/node:7.10
+      
     working_directory: ~/repo
     steps:
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
-          keys:
+        keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
@@ -21,29 +22,29 @@ jobs:
       - run: yarn install
 
       - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn run webdriver:update
       - run: yarn run webdriver:start
 
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
+    build:
+      docker:
+        # specify the version you desire here
+        - image: circleci/node:7.10
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    steps:
-      - attach_workspace:
-        at: repo
-      # run tests!
-  
-      - run: yarn test
+      steps:
+        - attach_workspace:
+          at: repo
+
+        # run tests!
+        - run: yarn test
 
 workflows:
   version: 2
