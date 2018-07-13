@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"test": "protractor config.js"
+	},
   "devDependencies": {
     "protractor": "^5.3.2"
   }
