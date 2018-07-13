@@ -33,11 +33,24 @@ jobs:
           background: true
 
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: circleci/node:10-browsers
     working_directory: ~/repo
     steps:
       - checkout
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: Install
+          command: yarn install
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
       - run: yarn test
 
 workflows:
