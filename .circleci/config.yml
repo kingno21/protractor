@@ -5,13 +5,15 @@ jobs:
       - image: circleci/node:7.10
 
     working_directory: ~/repo
-    
+
     steps:
       - checkout
+      
       - run:
         name: Install
         command: |
           yarn install
+
       - run:
         name: Selenium
         background: true
