@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Selenium
           command: |
-            yarn run webdriver:start
+            yarn run webdriver:start &
 
       - run:
           name: run test
