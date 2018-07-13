@@ -51,6 +51,4 @@ workflows:
   run_test:
     jobs:
       - server
-      - test:
-        requires:
-          - server
+      - test
