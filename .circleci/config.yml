@@ -10,16 +10,23 @@ jobs:
       - checkout
 
       - run:
-        name: Install
-        command: yarn install
+          name: Install
+          command: yarn install
 
       - run:
-        name: Selenium
-        background: true
-        command: |
-          yarn run webdriver:update
-          yarn run webdriver:start
+          name: Selenium
+          background: true
+          command: |
+            yarn run webdriver:update
+            yarn run webdriver:start
 
       - run:
-        command: |
-          yarn run test
+          name: run test
+          command: |
+            yarn run test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
