@@ -50,7 +50,5 @@ workflows:
   version: 2
   browser-and-test:
     jobs: 
-      - browser:
-      - test:
-        requires:
-          - browser
+      - browser
+      - test
