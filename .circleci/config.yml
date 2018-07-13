@@ -39,12 +39,12 @@ jobs:
 
 workflows:
   version: 2
-  browser-and-test:
+  build-and-test:
     jobs: 
-      - browser
+      - build
       - test:
         requires:
-          - browser
+          - build
         filters:
           branches:
             only: master
