@@ -19,6 +19,7 @@ jobs:
             sudo pip install mozdownload mozinstall
             mozdownload --version latest --destination firefox.tar.bz2
             mozinstall firefox.tar.bz2
+            sudo mkdir -p /opt/firefox/
             sudo cp -R firefox/* /opt/firefox/
             # Latest chrome is already installed in the default container.
             # curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
