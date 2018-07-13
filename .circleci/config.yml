@@ -25,7 +25,13 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn run webdriver:update
-      - run: yarn run webdriver:start &
+
+      - run: 
+        name: Selenium Start
+        background: true
+        command: |
+          yarn run webdriver:update
+          yarn run webdriver:start
+
       - run: yarn run test
 
