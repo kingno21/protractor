@@ -25,7 +25,7 @@ jobs:
           name: Selenium
           background: true
           command: |
-            yarn run webdriver:update
+            sudo yarn run webdriver:update
 
       - run:
           name: Selenium
