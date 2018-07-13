@@ -29,7 +29,8 @@ jobs:
       - run:
           name: Selenium
           command: |
-            yarn run webdriver:start &
+            yarn run webdriver:start
+          background: true
 
       - run:
           name: run test
