@@ -1,5 +1,7 @@
 {
 	"scripts": {
+		"webdriver:update": "webdriver-manager update",
+		"webdriver:start": "webdriver-manager start",
 		"test": "protractor config.js"
 	},
   "devDependencies": {
