@@ -9,9 +9,17 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
+
       - run:
           name: Install
           command: yarn install
+
+      - save_cache:
+          key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - "node_modules"
 
       - run:
           name: Selenium
