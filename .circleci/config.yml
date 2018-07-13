@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  server:
+  browser:
     docker:
       - image: circleci/node:7.10
       
@@ -48,10 +48,9 @@ jobs:
 
 workflows:
   version: 2
-  server-and-test:
+  browser-and-test:
     jobs:
-      - server
-
+      - browser
       - test:
         requires:
-          - server
+          - browser
