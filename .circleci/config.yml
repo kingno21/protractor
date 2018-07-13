@@ -23,7 +23,7 @@ jobs:
       - run:
           name: run test
           command: |
-            yarn run test
+            yarn test
 
 workflows:
   version: 2
