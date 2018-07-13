@@ -26,25 +26,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn run webdriver:update
-      - run: yarn run webdriver:start
-
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/repo
-    steps:
-      - checkout
+      - run: yarn run webdriver:start &
       - run: yarn run test
 
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs: 
-      - build
-
-      - deploy:
-        requires:
-          - build
-        filters:
-          branches:
-            only: master
