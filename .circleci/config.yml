@@ -10,22 +10,27 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
 
       - run:
           name: Install
           command: yarn install
 
       - save_cache:
-          key: node_modules-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - "node_modules"
+            - node_modules
 
       - run:
           name: Selenium
           background: true
           command: |
             yarn run webdriver:update
+
+      - run:
+          name: Selenium
+          background: true
+          command: |
             yarn run webdriver:start
 
       - run:
