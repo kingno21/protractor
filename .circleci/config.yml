@@ -48,7 +48,7 @@ jobs:
 
 workflows:
   version: 2
-  server_and_test:
+  server-and-test:
     jobs:
       - server
 
