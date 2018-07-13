@@ -49,6 +49,8 @@ workflows:
   run_test:
     jobs:
       - server
-      - build
+      - build:
+        requires:
+          - server
 
 
