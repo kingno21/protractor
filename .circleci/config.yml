@@ -30,7 +30,19 @@ jobs:
           name: Selenium
           command: |
             yarn run webdriver:start
-            yarn test
           background: true
 
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run: yarn test
 
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
