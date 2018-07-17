@@ -3,9 +3,9 @@ exports.config = {
 	specs: ['index_spec.js'],
 	multiCapabilities: [
 		{
-			'browserName': 'chrome',
-			'chromeOptions': {
-				args: [ "--headless", "--disable-gpu"]
+			'browserName': 'firefox',
+			'moz:firefoxOptions': {
+				args: [ "--headless" ]
 			}
 		}
 	]
