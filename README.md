@@ -1,3 +1,4 @@
+![CircleCI](https://circleci.com/gh/kingno21/protractor.svg?style=shield&circle-token=:circle-token)
 # Sample for Protractor.
 
 > CircleCI + Protractor + WebdriverManager
